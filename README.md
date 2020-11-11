@@ -1,2 +1,2 @@
 # contact-keeper
-Contact Keeper project (front end).
+Second project from the ReactJS course by Brad Traversy: Contact Keeper.
