@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { Fragment } from 'react';
+import Home from './components/pages/Home';
+import About from './components/pages/About';
+import Navbar from './components/layout/Navbar';
+import ContactState from './context/contact/contactState';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContactState>
+      <Router>
+        <Fragment>
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <Route exact path={ `${baseUrl}` } component={ Home } />
+              <Route exact path={ `${baseUrl}about` } component={ About } />
+            </Switch>
+          </div>
+        </Fragment>
+      </Router>
+    </ContactState>
   );
 }
 
